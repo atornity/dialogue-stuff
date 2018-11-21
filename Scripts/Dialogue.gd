@@ -7,12 +7,13 @@ onready var dialogueTextLabel = $Panel/DialogueText		### this is where the dialo
 ### [pause:10] - stop the dialogue for 10 seconds,
 ### [speed:0.01] - makes the text go all slow like this ... so slow ...
 ### make new ones at the botom of the script
-var text = "[speed:0.2]the angry man was [pause:0.5][speed:0.1]busy being [pause:1.0][speed:0.05]angry all the [speed:0.03]time.[speed:0.15][pause:0.5] sometimes he was not that angry though[pause:0.5][speed:0.224], which was nice[pause:0.5] for him[pause:0.25] too[pause:0.3] but mostly for the rest of us.[pause:3] yay.[pause:0.4] actually,[pause:0.3] there is a secret code at the end[pause:0.3], it's 008492[pause:0.45], you can use it for[pause:0.25] secret doors[pause:0.2] and[pause:0.5] other[0.35] secret[pause:0.4] things"
+var text = "[speed:0.2]the angry man was [pause:0.5][speed:0.1]busy being [pause:1.0][speed:0.05]angry all the [speed:0.03]time.[speed:0.15][pause:0.5] sometimes he was not that angry though[pause:0.5][speed:0.224], which was nice[pause:0.5] for him[pause:0.25] too[pause:0.3] but mostly for the rest of us.[pause:3] yay.[pause:0.4] actually,[pause:0.3] there is a secret code at the end[pause:0.3], it's[speed:0.045] 008492[speed:0.224][pause:0.2], you can use it for[pause:0.25] secret doors[pause:0.2] and[pause:0.5] other[0.45] secret[pause:0.4] things.[pause:3][speed:0.234] you know.[pause:0.7] safes[pause:0.185] and stuff."
 ### above me is the example text, probably replace it and write a system for like, actually advancing the story and stuff
 
-### you actually have to write it like 
+### you actually HAVE to write it like 
 ### THIS: "hello[pause:1] there!". 
-### NOT: "hello [pause:1]there". it seems small but it's a big deal!
+### NOT: "hello [pause:1]there".	it seems small but it's a big deal!
+### THISISFINETHO: "hello[pause:1], there"	commas are fine for some reason.
 
 ### Index of the latest symbol being rendered to the text box :)
 var currentLetter = 0
@@ -46,7 +47,7 @@ func FindCommand(textString, textPositionInt):		### textString is the command li
 			if c == "]" and p > textPositionInt:	### this means the command is over :)
 				ExecuteCommand(commandString)
 				return p
-				break
+				break	### we don't have to keep looping at this point
 			else:
 				commandString += c
 		p += 1
@@ -63,6 +64,6 @@ func ExecuteCommand(commandString):
 		$Timer.wait_time = 0.01 / float(commandValue)
 		lastWaitTime = $Timer.wait_time
 	
-	if command == "pause":
+	if command == "pause" or "delay":
 		lastWaitTime = $Timer.wait_time		### i had to add this for things to work properly
 		$Timer.wait_time = float(commandValue)

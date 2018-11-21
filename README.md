@@ -6,6 +6,9 @@ you can write things like "i'm[delay:0.5] tired" to display "i'm tired" but with
 
 
 
+
+
+
 tired" 
 
 like this a little bit but it's still next to eachother so like "i'm tired" but with like a delay and stuff

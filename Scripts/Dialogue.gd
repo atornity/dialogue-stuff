@@ -7,14 +7,18 @@ onready var dialogueTextLabel = $Panel/DialogueText		### this is where the dialo
 ### [pause:10] - stop the dialogue for 10 seconds,
 ### [speed:0.01] - makes the text go all slow like this ... so slow ...
 ### make new ones at the botom of the script
-var text = "[speed:0.2]the angry man was [pause:0.5][speed:0.1]busy being [pause:1.0][speed:0.05]angry all the [speed:0.03]time.[speed:0.15][pause:0.5] sometimes he was not that angry though[pause:0.5][speed:0.224], which was nice[pause:0.5] for him[pause:0.25] too[pause:0.3] but mostly for the rest of us."
+var text = "[speed:0.2]the angry man was [pause:0.5][speed:0.1]busy being [pause:1.0][speed:0.05]angry all the [speed:0.03]time.[speed:0.15][pause:0.5] sometimes he was not that angry though[pause:0.5][speed:0.224], which was nice[pause:0.5] for him[pause:0.25] too[pause:0.3] but mostly for the rest of us.[pause:3] yay.[pause:0.4] actually,[pause:0.3] there is a secret code at the end[pause:0.3], it's 008492[pause:0.45], you can use it for[pause:0.25] secret doors[pause:0.2] and[pause:0.5] other[0.35] secret[pause:0.4] things"
 ### above me is the example text, probably replace it and write a system for like, actually advancing the story and stuff
+
+### you actually have to write it like 
+### THIS: "hello[pause:1] there!". 
+### NOT: "hello [pause:1]there". it seems small but it's a big deal!
 
 ### Index of the latest symbol being rendered to the text box :)
 var currentLetter = 0
 var isRenderingText = true
 
-### this is the previous $Timer.wait_time, we need it for [pause:] to work properly :)
+### this is the previous $Timer.wait_time, we need it for [pause:] to work properly :)				[pause:] pauses things if you havent seen that, up there, it's up there. on the top of the thing
 onready var lastWaitTime = $Timer.wait_time
 
 func _on_Timer_timeout(): ### called whenever $Timer.wait_time have elapsed
